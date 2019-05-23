@@ -1,0 +1,34 @@
+1. instalar un nuevo proyecto de laravel
+
+2. instalar los siguientes servicios
+	- https://laravelcollective.com/docs/master/html
+	- https://github.com/caffeinated/shinobi
+
+3.crear la base de datos y despues ir a Providers y configurar
+	agregar en el encabezado: 
+		- use Illuminate\Support\Facades\Schema;
+	y en el metodo boot() agregar: 
+		-Schema::defaultStringLength(120);
+
+4. ir al terminal y crear las migraciones
+
+5. crear los permisos por defecto mediante un seeder
+	- php artisan make:seeder PermissionsTableSeeder
+6. dar de alta el sed en la clase DatabaseSeeder.php
+	agregar:
+		- $this->call(PermissionsTableSeeder::class);
+7. ejecutar en la consola:
+	- php artisan migrate:refresh --seed
+
+8. creare el modulo completo a partir de un modelo:
+	- php artisan make:model Videos -a
+
+
+
+Muy importante a la hora de crear un proyecto de permisos y roles se debe de tener ya la lista de permisos con las rutas ya definidas en el sistema.
+
+Y tambien el rol de admin por defecto
+
+la seguridad se mide en 2 CAPAS:
+	1: a nivel del visual
+	2: a nivel de servidor
